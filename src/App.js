@@ -34,7 +34,7 @@ function App() {
   const toast = useToast()
 
   function addTodo(todo) {
-    setTodos([...todos, todo]);
+    setTodos([todo,...todos]); //key of reversing array
     toast({
       title: `${todo.body} telah berhasil ditambahkan`,
       status: "success",
