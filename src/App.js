@@ -9,7 +9,7 @@ import { useToast } from "@chakra-ui/react"
 function App() {
 
   const [todos, setTodos] = useState(
-    () => JSON.parse(localStorage.getItem('todos')) || [{id: "1", body:"contoh to do list"}]
+    () => JSON.parse(localStorage.getItem('todos')) || [{id: "12", body:"contoh to do list"}]
   );
 
   useEffect(() => {
@@ -18,6 +18,14 @@ function App() {
 
   function deleteTodo(id) {
     const newTodos = todos.filter(todo => {
+      if (todo.id === id) {
+        toast({
+          title: `${todo.body} telah berhasil dihapus`,
+          status: "info",
+          duration: 2000,
+          isClosable: true,
+        })
+      }
       return todo.id !== id
     })
     setTodos(newTodos);
